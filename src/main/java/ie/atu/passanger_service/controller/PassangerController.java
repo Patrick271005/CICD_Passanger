@@ -49,8 +49,12 @@ public class PassangerController {
         Optional<Passanger> maybe = service.findById(id);
         if (maybe.isPresent()) {
             Passanger updated = maybe.get();
-            updated.setName(p.getName());
+            updated.setName(p.getName());//update with user inputted
+            updated.setPassengerId(p.getPassengerId());
+            updated.setEmail(p.getEmail());
 
+            service.update(updated);//save changes
+            return ResponseEntity.ok(updated);
         }
         return ResponseEntity.notFound().build();
 
