@@ -3,6 +3,7 @@ package ie.atu.passanger_service.controller;
 import ie.atu.passanger_service.model.Passanger;
 import ie.atu.passanger_service.service.PassangerService;
 import jakarta.validation.Valid;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,5 +43,33 @@ public class PassangerController {
                 .created(URI.create("/api/passangers/" + created.getPassengerId()))
                 .body(created);
     }
+
+    @PutMapping("/api/passangers/{id}")
+    public ResponseEntity<Passanger> update(@PathVariable String id, @Valid @RequestBody Passanger p) {
+        Optional<Passanger> maybe = service.findById(id);
+        if (maybe.isPresent()) {
+            Passanger updated = maybe.get();
+            updated.setName(p.getName());
+
+        }
+        return ResponseEntity.notFound().build();
+
+    }
+
+    @DeleteMapping("/api/passangers/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id, @RequestBody Passanger p) {
+        Optional<Passanger> maybe = service.findById(id);
+
+        if (maybe.isPresent()) {
+            Passanger deleted = maybe.get();
+
+
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
+
+
 }
 
