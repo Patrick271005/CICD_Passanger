@@ -9,6 +9,12 @@ class PassangerServiceApplicationTests {
     @Test
     void contextLoads() {
     }
+    @Test
+    void getPassanger() {
 
+    }
+    @Test
+    void getPassangerService() {
+    }
 
 }
