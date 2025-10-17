@@ -31,4 +31,15 @@ public class PassangerService {
         store.add(p);
         return p;
     }
+    public Passanger update(Passanger p) {
+        if (findById(p.getPassengerId()).isPresent()) {
+            throw new IllegalArgumentException("passengerId already exists");
+        }
+        store.add(p);
+        return p;
+    }
+    public void deleteById(String id) {
+        store.removeIf(p -> p.getPassengerId().equals(id));
+
+    }
 }

@@ -57,11 +57,12 @@ public class PassangerController {
     }
 
     @DeleteMapping("/api/passangers/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id, @RequestBody Passanger p) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         Optional<Passanger> maybe = service.findById(id);
 
         if (maybe.isPresent()) {
-            Passanger deleted = maybe.get();
+            service.deleteById(id);
+            return ResponseEntity.noContent().build();
 
 
         }
