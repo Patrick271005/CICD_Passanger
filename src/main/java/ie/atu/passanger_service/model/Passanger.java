@@ -19,4 +19,5 @@ public class Passanger {
     private String name;
     @NotBlank @Email
     private String email;
+    //
 }
